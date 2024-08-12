@@ -1,3 +1,5 @@
+import { maxIndex } from "./utils";
+
 export enum RPSMove {
     ROCK = 'R',
     PAPER = 'P',
@@ -34,6 +36,13 @@ export class RPSNGram {
         // Chain the moves together with a colon; discart the last opponent move
         return this.trajectory.map(t => `${t.player}${t.opponent}`).join(':').slice(0, -1);
     }
+
+    getNextKeyPrefix(): string {
+        if (this.n === 1) {
+            return '';
+        }
+        return this.trajectory.slice(1).map(t => `${t.player}${t.opponent}`).join(':') + ':';
+    }
 }
 
 export class RPSNGramCounts {
@@ -61,7 +70,7 @@ export class RPSNGramCounts {
         }
     }
 
-    getP(key: string): number {
+    getProbability(key: string): number {
         // Check if the key is valid
         const keyRe = new RegExp(`^([RPS]{2}:){${this.n-1}}[RPS]$`);
         if (!keyRe.test(key)) {
@@ -69,6 +78,25 @@ export class RPSNGramCounts {
         }
 
         return ((this.dict[key] || 0) + 1)/this.N;
+    }
+
+    getNextMoveProbabilities(): number[] {
+        const nextKeyPrefix = this.last.getNextKeyPrefix();
+        const nextMoves = ['R', 'P', 'S'];
+        try {
+            const P = nextMoves.map(m => this.getProbability(nextKeyPrefix + m));
+            const norm = P.reduce((a, b) => a + b, 0);
+            return P.map(p => p/norm);    
+        }
+        catch (e) {
+            // If there's not enough data, return uniform probabilities
+            return [1/3, 1/3, 1/3];
+        }
+    }
+
+    getNextMovePrediction(): RPSMove {
+        const probs = this.getNextMoveProbabilities();
+        return [RPSMove.ROCK, RPSMove.PAPER, RPSMove.SCISSORS][maxIndex(probs)];
     }
 
 }
