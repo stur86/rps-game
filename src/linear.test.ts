@@ -1,5 +1,5 @@
 import { test, expect } from 'bun:test';
-import { RPSLinearNGramCombo, type RPSLinearNGramComboPrediction } from './linear';
+import { RPSLinearNGramCombo } from './linear';
 import { RPSMove } from './ngram';
 
 test('RPSLinearNGramCombo', () => {
