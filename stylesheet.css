@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Sono:wght@200..800&display=swap');
+
+body {
+    --bg-color: #000511;
+    --color: #aafaff;
+    background-color: var(--bg-color);
+    color: var(--color);
+    font-family: 'Dosis';
+}
+
+.rps-card {
+    padding: 10px;
+    margin: 5px;
+    border: 5px solid var(--color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rps-card svg {
+    width: 150px;
+    height: 220px;
+    stroke: var(--color);
+    fill: transparent;
+    stroke-width: 2px;
+}

@@ -1,5 +1,5 @@
-import { RPSMove } from "./src/ngram";
-import { RPSLinearNGramCombo } from "./src/linear";
+import { RPSMove } from "./src/ai/ngram";
+import { RPSLinearNGramCombo } from "./src/ai/linear";
 
 // Use the command argument to determine the number of n-grams to use
 const n = parseInt(process.argv[2]) || 3;

@@ -1,11 +1,5 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
-
-function App() {
-    return <React.StrictMode>
-        <div>Hello</div>
-    </React.StrictMode>;
-}
+import App from './src/App';
 
 window.onload = () => {
     const domRoot = document.getElementById('root');
