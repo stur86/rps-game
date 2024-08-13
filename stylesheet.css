@@ -19,6 +19,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    filter: drop-shadow(1px 1px 1.5px var(--color));
 }
 
 .rps-card svg {
@@ -27,4 +28,19 @@ body {
     stroke: var(--color);
     fill: transparent;
     stroke-width: 2px;
+}
+
+.rps-hand {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.rps-hand .rps-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.rps-hand .rps-card:hover {
+    transform: translateY(-10px);
 }

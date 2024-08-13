@@ -1,10 +1,11 @@
-import { RPSNGramCounts, type RPSTurn } from "./ngram";
+import { RPSMove, RPSNGramCounts, type RPSTurn } from "./ngram";
 import { maxIndex } from "./utils";
 
 export type RPSLinearNGramComboPrediction = {
     matrix: number[][],
     probabilities: number[],
     index: number
+    move: RPSMove
 };
 
 export class RPSLinearNGramCombo {
@@ -25,7 +26,8 @@ export class RPSLinearNGramCombo {
         const x = this.x;
         const probs = pmat.reduce((acc, p, i) => {return acc.map((p0, j) => (p0+p[j]*x[i])) } , [0.0, 0.0, 0.0]);
         const i = maxIndex(probs);
-        return {matrix: pmat, probabilities: probs, index: i};
+        const move = ['R', 'P', 'S'][i] as RPSMove;
+        return {matrix: pmat, probabilities: probs, index: i, move: move};
     }
 
     updateWeights(turn: RPSTurn) {

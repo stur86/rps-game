@@ -1,4 +1,7 @@
+import Hand from "./Hand"
+
 export default function Game() {
-    return (<></>
-    )
+    return (<div className="rps-game">
+        <Hand />
+    </div>);
 }
