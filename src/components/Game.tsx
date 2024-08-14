@@ -1,9 +1,15 @@
 import Hand from "./Hand"
-import { type RPSTurn, RPSMove } from "../ai/ngram";
+import { RPSMove } from "../ai/ngram";
 import GameLogic, { type Score } from "../game";
 import { useEffect, useState } from "react";
 
 let game = new GameLogic(3);
+
+type TurnInfo = {
+    player: RPSMove,
+    ai: RPSMove,
+    result: number
+}
 
 function ScoreDisplay(props: { W: number, T: number, L: number }) {
     return (<div className="rps-score">
@@ -12,10 +18,11 @@ function ScoreDisplay(props: { W: number, T: number, L: number }) {
 }
 
 export default function Game() {
-    const [lastTurn, setLastTurn] = useState<RPSTurn | null>(null);
+    const [lastTurn, setLastTurn] = useState<TurnInfo | null>(null);
 
-    function playFunction(m: RPSMove) {
-        console.log(m);
+    function playFunction(playerMove: RPSMove) {
+        const [aiMove, result] = game.play(playerMove);
+        setLastTurn({ player: playerMove, ai: aiMove, result: result});
     }
 
     return (<div className="rps-game">

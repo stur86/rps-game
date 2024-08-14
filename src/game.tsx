@@ -17,7 +17,7 @@ export default class GameLogic {
 
     play(playerMove: RPSMove): [RPSMove, number] {
         // Get the AI's move
-        const aiMove = this.ai.getNextMovePrediction().move;
+        const aiMove = this.ai.getNextMovePrediction().suggestedMove;
         // Check who won
         const result = this.checkResult(playerMove, aiMove);
         switch (result) {
