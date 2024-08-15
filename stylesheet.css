@@ -3,6 +3,7 @@
 body {
     --bg-color: #000511;
     --color: #aafaff;
+    --color-secondary: #e23c30;
     background-color: var(--bg-color);
     color: var(--color);
     font-family: 'Dosis';
@@ -55,5 +56,41 @@ body {
 
 .rps-score {
     font-size: 2em;
+    text-align: center;
+}
+
+.rps-turn-moves {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    margin-top: 10px;
+    min-height: calc(280px + 1.5em);
+}
+
+.rps-move {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.rps-move:last-of-type {
+    color: var(--color-secondary);
+}
+
+.rps-move:last-of-type .rps-card {
+    border-color: var(--color-secondary);
+    filter: drop-shadow(1px 1px 1.5px var(--color-secondary));
+}
+
+.rps-move:last-of-type svg {
+    stroke: var(--color-secondary);
+}
+
+
+.rps-turn-outcome {
+    font-size: 1.5em;
+    min-height: 1.6em;
     text-align: center;
 }
