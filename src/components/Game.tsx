@@ -1,7 +1,8 @@
 import Hand from "./Hand"
+import { type PropsWithChildren } from "react";
 import { RPSMove } from "../ai/ngram";
 import GameLogic, { type Score } from "../game";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Card from "./Card";
 
 let game = new GameLogic(3);
@@ -17,6 +18,26 @@ function ScoreDisplay(props: { W: number, T: number, L: number }) {
         {props.W}W/{props.T}T/{props.L}L
     </div>);
 }
+
+function MoveDisplay(props: PropsWithChildren<{ move: RPSMove, fromRight: boolean }>) {
+    const divRef = useRef<HTMLDivElement>(null);
+    const initStyle = {transform: `translateX(${props.fromRight? '':'-'}100vw)`, transition: "transform 0.2s"};
+
+    divRef.current?.style.setProperty("transition", "transform 0s");
+    divRef.current?.style.setProperty("transform", initStyle.transform);
+
+    setTimeout(() => {
+        divRef.current?.style.setProperty("transition", initStyle.transition);
+        divRef.current?.style.setProperty("transform", "translateX(0)");
+    }, 1);
+
+    return (
+        <div className="rps-move" ref={divRef} 
+        style={initStyle}>
+            <Card symbol={props.move}/>{props.children}
+        </div>
+    )
+};
 
 function TurnDisplay(props: { turn: TurnInfo|null }) {
 
@@ -35,11 +56,11 @@ function TurnDisplay(props: { turn: TurnInfo|null }) {
         <div className="rps-turn-moves">
             {
                 props.turn === null ? null : 
-                <div className="rps-move"><Card symbol={props.turn.player}/>Player</div>
+                <MoveDisplay move={props.turn.player} fromRight={false}>Player</MoveDisplay>
             }
             {
                 props.turn === null ? null : 
-                <div className="rps-move"><Card symbol={props.turn.ai}/>AI</div>
+                <MoveDisplay move={props.turn.ai} fromRight={true}>AI</MoveDisplay>
             }
         </div>
         <div className="rps-turn-outcome">
