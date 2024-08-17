@@ -1,6 +1,6 @@
 import { RPSMove } from "../ai/ngram";
 
-const svgRockPath = (
+export const svgRockPath = (
   <g id="rock">
     <path
        id="rect1-6-8-6-8-0-6-2"
@@ -8,7 +8,7 @@ const svgRockPath = (
   </g>
 );
 
-const svgPaperPath = (
+export const svgPaperPath = (
   <g id="paper">
     <path
        id="path3"
@@ -17,7 +17,7 @@ const svgPaperPath = (
   </g>
 );
 
-const svgScissorsPath = (
+export const svgScissorsPath = (
   <g id="scissors">
     <path
        id="rect1-6-3-2-2"

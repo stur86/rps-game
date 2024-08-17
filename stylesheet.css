@@ -95,3 +95,29 @@ body {
     min-height: 1.6em;
     text-align: center;
 }
+
+.title-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-page h1 {
+    font-weight: normal;
+    font-size: 3em;
+}
+
+.title-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.title-icons svg {
+    stroke: var(--color);
+    stroke-width: 2px;
+    filter: drop-shadow(1px 1px 0.5px var(--color));
+}
