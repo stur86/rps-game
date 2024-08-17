@@ -4,6 +4,7 @@ import { RPSMove } from "../ai/ngram";
 import GameLogic, { type Score } from "../game";
 import { useEffect, useState, useRef } from "react";
 import Card from "./Card";
+import Button from "./Button";
 
 let game = new GameLogic(3);
 
@@ -69,7 +70,7 @@ function TurnDisplay(props: { turn: TurnInfo|null }) {
     </div>);
 }
 
-export default function Game() {
+export default function Game(props: { onQuit: () => void }) {
     const [lastTurn, setLastTurn] = useState<TurnInfo | null>(null);
 
     function playFunction(playerMove: RPSMove) {
@@ -81,5 +82,6 @@ export default function Game() {
         <ScoreDisplay W={game.score.W} T={game.score.T} L={game.score.L} />
         <TurnDisplay turn={lastTurn} />
         <Hand playFunction={playFunction} />
+        <Button onClick={props.onQuit} label="Quit" />
     </div>);
 }

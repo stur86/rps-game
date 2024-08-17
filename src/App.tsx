@@ -15,7 +15,7 @@ export default function App() {
         {
             state === AppState.TITLE ?
             <Title onStartGame={() => setState(AppState.GAME)}/> : 
-            <Game/>
+            <Game onQuit={() => setState(AppState.TITLE)}/>
         }
     </React.StrictMode>
 }
