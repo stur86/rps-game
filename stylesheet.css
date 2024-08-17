@@ -108,16 +108,58 @@ body {
 .title-page h1 {
     font-weight: normal;
     font-size: 3em;
+    margin-bottom: 15px;
 }
 
 .title-icons {
     display: flex;
     flex-direction: row;
     gap: 25px;
+    margin-bottom: 30px;
 }
 
 .title-icons svg {
     stroke: var(--color);
     stroke-width: 2px;
     filter: drop-shadow(1px 1px 0.5px var(--color));
+}
+
+.button {
+    font-size: 1.4em;
+    border: 1px solid var(--color);
+    padding: 8px 16px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.button:hover {
+    background-color: var(--color);
+    color: var(--bg-color);
+}
+
+.notes-box {
+    position: fixed;
+    width: 80vw;
+    height: 90vh;
+    background-color: var(--bg-color);
+    z-index: 100;
+    border: 1px solid var(--color);
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: none;
+}
+
+.notes-box .notes-content {
+    text-align: justify;
+}
+
+.notes-box.visible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
