@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "bun build index.tsx --outdir dist; cp static/* dist",
-    "build-watch": "bun build index.tsx --watch",
+    "build-watch": "bun build index.tsx --watch --outfile static/index.js",
     "publish": "gh-pages -d dist"
   }
 }
