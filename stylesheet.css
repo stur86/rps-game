@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Sono:wght@200..800&display=swap');
+
+body {
+    --bg-color: #000511;
+    --color: #aafaff;
+    --color-secondary: #e23c30;
+    background-color: var(--bg-color);
+    color: var(--color);
+    font-family: 'Dosis';
+    overflow: hidden;
+}
+
+.rps-card {
+    padding: 10px;
+    margin: 5px;
+    border: 5px solid var(--color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(1px 1px 1.5px var(--color));
+}
+
+.rps-card svg {
+    width: 150px;
+    height: 220px;
+    stroke: var(--color);
+    fill: transparent;
+    stroke-width: 2px;
+}
+
+.rps-hand {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.rps-hand .rps-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.rps-hand .rps-card:hover {
+    transform: translateY(-10px);
+}
+
+.rps-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rps-score {
+    font-size: 2em;
+    text-align: center;
+}
+
+.rps-turn-moves {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    margin-top: 10px;
+    min-height: calc(280px + 1.5em);
+}
+
+.rps-move {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.rps-move:last-of-type {
+    color: var(--color-secondary);
+}
+
+.rps-move:last-of-type .rps-card {
+    border-color: var(--color-secondary);
+    filter: drop-shadow(1px 1px 1.5px var(--color-secondary));
+}
+
+.rps-move:last-of-type svg {
+    stroke: var(--color-secondary);
+}
+
+
+.rps-turn-outcome {
+    font-size: 2.0em;
+    min-height: 1.6em;
+    text-align: center;
+}
+
+.title-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-page h1 {
+    font-weight: normal;
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.title-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.title-icons svg {
+    stroke: var(--color);
+    stroke-width: 2px;
+    filter: drop-shadow(1px 1px 0.5px var(--color));
+}
+
+.button {
+    font-size: 1.4em;
+    border: 1px solid var(--color);
+    padding: 8px 16px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.button:hover {
+    background-color: var(--color);
+    color: var(--bg-color);
+}
+
+.notes-box {
+    position: fixed;
+    width: 80vw;
+    height: 90vh;
+    background-color: var(--bg-color);
+    z-index: 100;
+    border: 5px solid var(--color);
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: none;
+}
+
+.notes-box .notes-content {
+    text-align: justify;
+}
+
+.notes-box .notes-content a {
+    color: var(--color-secondary);
+}
+
+.notes-box.visible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
